@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import styledComponents from "styled-components";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -27,12 +28,13 @@ right: ${(props) => props.direction === "right" && "10px"};
 cursor: pointer;
 margin: auto;
 opacity: 0.5;
+z-index: 2;
 `;
 
 const Wrapper = styledComponents.div`
 height: 100%;
 display: flex;
-
+transform: translateX(0vw);
 `;
 
 const Slide = styledComponents.div`
@@ -40,6 +42,7 @@ width: 100vw;
 height: 100vh;
 display: flex;
 align-items: center;
+background-color: #${(props) => props.bg}
 `;
 
 const ImgContainer = styledComponents.div`
@@ -75,13 +78,16 @@ cursor: pointer;
 `;
 
 function Slider() {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {};
+
   return (
     <Container>
-      <Arrow direction="left">
+      <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowBackIosIcon />
       </Arrow>
       <Wrapper>
-        <Slide>
+        <Slide bg="pink">
           <ImgContainer>
             <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
           </ImgContainer>
@@ -91,7 +97,7 @@ function Slider() {
             <Button>Shop Now</Button>
           </InfoContainer>
         </Slide>
-        <Slide>
+        <Slide bg="lightblue">
           <ImgContainer>
             <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
           </ImgContainer>
@@ -101,7 +107,7 @@ function Slider() {
             <Button>Shop Now</Button>
           </InfoContainer>
         </Slide>
-        <Slide>
+        <Slide bg="lightgrey">
           <ImgContainer>
             <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
           </ImgContainer>
@@ -112,7 +118,7 @@ function Slider() {
           </InfoContainer>
         </Slide>
       </Wrapper>
-      <Arrow direction="right">
+      <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowForwardIosIcon />
       </Arrow>
     </Container>
