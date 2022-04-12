@@ -6,15 +6,16 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Container = styledComponents.div`
 height: 60px;
-
-
 `;
+
 const Wrapper = styledComponents.div`
-display:flex;
+display: flex;
 justify-content: space-between;
 align-items: center;
 padding: 10px 20px;
+
 `;
+
 const Left = styledComponents.div`
 display:flex;
 align-items: center;
@@ -23,7 +24,6 @@ flex:1;
 
 const Language = styledComponents.span`
 font-size: 14px;
-
 cursor: pointer;
 `;
 
@@ -41,10 +41,11 @@ border: none;
 
 const Center = styledComponents.div`
 flex:1;
+text-align: center;
 `;
 
 const Logo = styledComponents.h1`
-  font-weight:bold;
+  font-weight: bold;
   text-align: center
 `;
 
