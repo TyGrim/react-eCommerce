@@ -34,11 +34,12 @@ height: 100%;
 const Slide = styledComponents.div`
 display: flex;
 align
-`
+`;
 
-const ImgContainer = styledComponents.div``
+const ImgContainer = styledComponents.div`
+`;
 
-const InfoContainer = styledComponents.div``
+const InfoContainer = styledComponents.div``;
 
 function Slider() {
   return (
@@ -46,9 +47,7 @@ function Slider() {
       <Arrow direction="left">
         <ArrowBackIosIcon />
       </Arrow>
-      <Wrapper>
-        
-      </Wrapper>
+      <Wrapper></Wrapper>
       <Arrow direction="right">
         <ArrowForwardIosIcon />
       </Arrow>
