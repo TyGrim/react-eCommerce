@@ -3,6 +3,7 @@ import { useState } from "react";
 import styledComponents from "styled-components";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { sliderItems } from "../data";
 
 const Container = styledComponents.div`
 display: flex;
@@ -34,7 +35,8 @@ z-index: 2;
 const Wrapper = styledComponents.div`
 height: 100%;
 display: flex;
-transform: translateX(0vw);
+transition: all 1.5s ease;
+transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
 const Slide = styledComponents.div`
@@ -46,12 +48,14 @@ background-color: #${(props) => props.bg}
 `;
 
 const ImgContainer = styledComponents.div`
-height: 100%;
+height: 100vh;
 flex: 1;
 `;
 
 const Image = styledComponents.img`
 height: 100%;
+max-width: 40vw;
+object-fit: cover;
 `;
 
 const InfoContainer = styledComponents.div`
@@ -79,44 +83,32 @@ cursor: pointer;
 
 function Slider() {
   const [slideIndex, setSlideIndex] = useState(0);
-  const handleClick = (direction) => {};
+  const handleClick = (direction) => {
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
 
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowBackIosIcon />
       </Arrow>
-      <Wrapper>
-        <Slide bg="pink">
-          <ImgContainer>
-            <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Summer Sale</Title>
-            <Description>Don't Wait.. Limited Prints Availible NOW</Description>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="lightblue">
-          <ImgContainer>
-            <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Fall Sale</Title>
-            <Description>Don't Wait.. Limited Prints Availible NOW</Description>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="lightgrey">
-          <ImgContainer>
-            <Image src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Winter Sale</Title>
-            <Description>Don't Wait.. Limited Prints Availible NOW</Description>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item) => (
+          <Slide bg={item.bg}>
+            <ImgContainer>
+              <Image src={item.img} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Description>{item.description}</Description>
+              <Button>Shop Now</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowForwardIosIcon />
