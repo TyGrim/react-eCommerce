@@ -7,7 +7,7 @@ import { sliderItems } from "../data";
 
 const Container = styledComponents.div`
 display: flex;
-height: 100vh;
+height: 90vh;
 width: 100%;
 position: relative;
 overflow: hidden;
@@ -41,21 +41,25 @@ transform: translateX(${(props) => props.slideIndex * -100}vw);
 
 const Slide = styledComponents.div`
 width: 100vw;
-height: 100vh;
+height: 90vh;
 display: flex;
 align-items: center;
 background-color: #${(props) => props.bg}
 `;
 
 const ImgContainer = styledComponents.div`
-height: 100vh;
+height: 90vh;
 flex: 1;
+position: relative;
 `;
 
 const Image = styledComponents.img`
 height: 100%;
 max-width: 40vw;
 object-fit: cover;
+bottom: 0;
+position: absolute;
+
 `;
 
 const InfoContainer = styledComponents.div`
