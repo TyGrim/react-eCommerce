@@ -1,1 +1,1 @@
-E-Commerce React App with Style Components
+E-Commerce React App, Style Components, @MUI Icons
