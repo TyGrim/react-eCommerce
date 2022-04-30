@@ -9,7 +9,7 @@ import SignIn from "./pages/SignIn";
 function App() {
   return (
     <div>
-      <Cart />
+      <Home />
     </div>
   );
 }

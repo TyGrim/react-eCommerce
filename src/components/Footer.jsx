@@ -11,7 +11,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  background-color: #373535cd;
+  background-color: #e8e7e7cd;
+  width: 100%;
 `;
 
 const Left = styled.div`

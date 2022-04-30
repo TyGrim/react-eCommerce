@@ -5,7 +5,10 @@ import Footer from "../components/Footer";
 import styled from "styled-components";
 import { Add, Remove } from "@mui/icons-material";
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+  min-height: 100vh;
+`;
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -32,10 +35,6 @@ const Info = styled.div`
   flex: 3;
 `;
 
-const Summary = styled.div`
-  flex: 1;
-`;
-
 const TopButton = styled.button`
   padding: 10px;
   font-weight: 600;
@@ -59,11 +58,16 @@ const Product = styled.div`
 `;
 
 const Details = styled.div`
+  display: flex;
+  align-items: center;
   flex: 2;
 `;
 
 const Image = styled.img`
-  width: 300px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  padding: 10px;
 `;
 
 const PriceDetails = styled.div`
@@ -110,6 +114,41 @@ const ItemColor = styled.div`
 
 const ItemSize = styled.span``;
 
+const Summary = styled.div`
+  flex: 1;
+  border: solid black 0.5px;
+  border-radius: 10px;
+  padding: 20px;
+  height: 40%;
+`;
+
+const SumTitle = styled.h1`
+  font-weight: 200;
+`;
+
+const SumItem = styled.div`
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const SumItemText = styled.span`
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
+`;
+
+const SumItemPrice = styled.span``;
+
+const SumButton = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+`;
+
 function Cart(props) {
   return (
     <Container>
@@ -139,7 +178,7 @@ function Cart(props) {
                   </ItemID>
                   <ItemColor color="black" />
                   <ItemSize>
-                    <b>Size:</b> Medium
+                    <b>Size:</b> 24 MP
                   </ItemSize>
                 </ItemDetails>
               </Details>
@@ -154,8 +193,62 @@ function Cart(props) {
                 </ItemPrice>
               </PriceDetails>
             </Product>
+            <hr
+              style={{
+                color: "#eee",
+                backgroundColor: "#eee",
+                height: 0.5,
+                borderColor: "#eee",
+              }}
+            />
+            <Product>
+              <Details>
+                <Image src="https://images.unsplash.com/photo-1586038693164-cb7ee3fb8e2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fG5lcmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" />
+                <ItemDetails>
+                  <ItemName>
+                    <b>Item:</b> Yellow Hoodie
+                  </ItemName>
+                  <ItemID>
+                    <b>ID:</b> 0555666888
+                  </ItemID>
+                  <ItemColor color="yellow" />
+                  <ItemSize>
+                    <b>Size:</b> Large
+                  </ItemSize>
+                </ItemDetails>
+              </Details>
+              <PriceDetails>
+                <ItemAmountContainer>
+                  <Add />
+                  <ItemCount>1</ItemCount>
+                  <Remove />
+                </ItemAmountContainer>
+                <ItemPrice>
+                  <b>Price:</b> $39.99
+                </ItemPrice>
+              </PriceDetails>
+            </Product>
           </Info>
-          <Summary>Summary</Summary>
+          <Summary>
+            <SumTitle>ORDER SUMMARY</SumTitle>
+            <SumItem>
+              <SumItemText>Subtotal</SumItemText>
+              <SumItemPrice>$ 69</SumItemPrice>
+            </SumItem>
+            <SumItem>
+              <SumItemText>Estimated Shipping</SumItemText>
+              <SumItemPrice>$ 6.99</SumItemPrice>
+            </SumItem>
+            <SumItem>
+              <SumItemText>Shipping Discount</SumItemText>
+              <SumItemPrice>$ -6.999</SumItemPrice>
+            </SumItem>
+            <SumItem>
+              <SumItemText type="total">Total</SumItemText>
+              <SumItemPrice>$ 69</SumItemPrice>
+            </SumItem>
+            <SumButton>CHECKOUT NOW</SumButton>
+          </Summary>
         </Bottom>
       </Wrapper>
       <Footer />
