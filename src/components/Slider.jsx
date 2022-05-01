@@ -1,88 +1,89 @@
 import React from "react";
 import { useState } from "react";
-import styledComponents from "styled-components";
+import styled from "styled-components";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { sliderItems } from "../data";
+import { mobile } from "../responsive";
 
-const Container = styledComponents.div`
-display: flex;
-height: 90vh;
-width: 100%;
-position: relative;
-overflow: hidden;
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  ${mobile({ display: "none" })}
 `;
 
-const Arrow = styledComponents.div`
-width: 50px;
-height: 50px;
-background-color: whitesmoke;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-position: absolute;
-top: 0;
-bottom: 0;
-left: ${(props) => props.direction === "left" && "10px"};
-right: ${(props) => props.direction === "right" && "10px"};
-cursor: pointer;
-margin: auto;
-opacity: 0.5;
-z-index: 2;
+const Arrow = styled.div`
+  width: 50px;
+  height: 50px;
+  background-color: whitesmoke;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: ${(props) => props.direction === "left" && "10px"};
+  right: ${(props) => props.direction === "right" && "10px"};
+  cursor: pointer;
+  margin: auto;
+  opacity: 0.5;
+  z-index: 2;
 `;
 
-const Wrapper = styledComponents.div`
-height: 100%;
-display: flex;
-transition: all 1.5s ease;
-transform: translateX(${(props) => props.slideIndex * -100}vw);
+const Wrapper = styled.div`
+  height: 100%;
+  display: flex;
+  transition: all 1.5s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
 `;
 
-const Slide = styledComponents.div`
-width: 100vw;
-height: 90vh;
-display: flex;
-align-items: center;
-background-color: #${(props) => props.bg}
+const Slide = styled.div`
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  background-color: #${(props) => props.bg};
 `;
 
-const ImgContainer = styledComponents.div`
-height: 90vh;
-flex: 1;
-position: relative;
+const ImgContainer = styled.div`
+  height: 90vh;
+  flex: 1;
+  position: relative;
 `;
 
-const Image = styledComponents.img`
-height: 100%;
-max-width: 40vw;
-object-fit: cover;
-bottom: 0;
-position: absolute;
-
+const Image = styled.img`
+  height: 100%;
+  max-width: 40vw;
+  object-fit: cover;
+  bottom: 0;
+  position: absolute;
 `;
 
-const InfoContainer = styledComponents.div`
-flex: 1;
-padding: 50px;
+const InfoContainer = styled.div`
+  flex: 1;
+  padding: 50px;
 `;
 
-const Title = styledComponents.h1`
-font-size: 70px;
+const Title = styled.h1`
+  font-size: 70px;
 `;
 
-const Description = styledComponents.p`
-margin: 50px 0px;
-font-size: 20px;
-font-weight: 500;
-letter-spacing: 3px;
+const Description = styled.p`
+  margin: 50px 0px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 3px;
 `;
 
-const Button = styledComponents.button`
-padding: 10px;
-font-size: 20px;
-background-color: transparent;
-cursor: pointer;
+const Button = styled.button`
+  padding: 10px;
+  font-size: 20px;
+  background-color: transparent;
+  cursor: pointer;
 `;
 
 function Slider() {

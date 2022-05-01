@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
   width: 100vw;
@@ -11,25 +12,23 @@ const Container = styled.div`
     url("https://images.unsplash.com/photo-1648737965328-0c7f98c86f98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"),
     no-repeat center center fixed;
   background-size: cover;
-
   display: flex;
   align-items: center;
   justify-content: center;
+  ${mobile({ backgroundSize: "contain" })}
 `;
 
 const Wrapper = styled.div`
   width: 30%;
   padding: 20px;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  ${mobile({ width: "75%" })}
 `;
 
 const Title = styled.h1`
   font-size: 25px;
   font-weight: 400;
+  text-align: center;
 `;
 
 const Input = styled.input`
@@ -38,6 +37,8 @@ const Input = styled.input`
   margin: 10px 0px;
   padding: 10px;
   font-size: 18px;
+  text-align: center;
+  ${mobile({ borderRadius: "10px" })}
 `;
 
 const Form = styled.form`
@@ -47,6 +48,7 @@ const Form = styled.form`
 `;
 
 const Button = styled.button`
+  font-size: 1.25rem;
   width: 100%;
   border: none;
   padding: 15px 20px;
@@ -54,6 +56,7 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
   margin-bottom: 5px;
+  ${mobile({ borderRadius: "10px" })}
 `;
 
 const Link = styled.a`
@@ -62,6 +65,8 @@ const Link = styled.a`
   text-decoration: underline;
   color: purple;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 `;
 
 function SignIn() {
